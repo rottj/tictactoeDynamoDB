@@ -89,7 +89,7 @@ function goToLogin(){
 }
 
 function verify() {
-    var nick = document.getElementById('nickInputVerify').value;
+    var nick = document.getElementById('nickInputRegister').value;
     var code = document.getElementById('codeInputVerify').value;
     if (nick && code) {
         var xhr = new XMLHttpRequest();
