@@ -5,8 +5,7 @@
 var url = window.location.href;
 var urlParts = url.split(':');
 var hostAddress = urlParts[0] + ':' + urlParts[1] + ':8080';
-// var API_URL = "API_GATEWAY_URL";
-var API_URL = "https://ruqrv544zj.execute-api.us-east-1.amazonaws.com/dev";
+var API_URL = "API_GATEWAY_URL";
 var sendLambda = false;
 
 var yourNick = localStorage.getItem('nick');
