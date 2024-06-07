@@ -16,34 +16,34 @@ CORS(app)
 
 jwtManager = JWTManager(app)
 # Cognito
-#USER_POOL_ID = os.getenv("USER_POOL_ID")
-#APP_CLIENT_ID = os.getenv("APP_CLIENT_ID")
-#COGNITO_REGION = os.getenv("COGNITO_REGION", "us-east-1")
+USER_POOL_ID = os.getenv("USER_POOL_ID")
+APP_CLIENT_ID = os.getenv("APP_CLIENT_ID")
+COGNITO_REGION = os.getenv("COGNITO_REGION", "us-east-1")
 
-USER_POOL_ID = "us-east-1_QsDLb0H97"
-APP_CLIENT_ID = "7i4fodra08e1oss3hj79i7geq8"
-COGNITO_REGION = "us-east-1"
+# USER_POOL_ID = "us-east-1_QsDLb0H97"
+# APP_CLIENT_ID = "7i4fodra08e1oss3hj79i7geq8"
+# COGNITO_REGION = "us-east-1"
 
 # S3 Bucket
-# S3_PROFILE_PICTURES = os.getenv("S3_PROFILE_PICTURES")
-# S3_REGION = os.getenv("S3_REGION", "us-east-1")
+S3_PROFILE_PICTURES = os.getenv("S3_PROFILE_PICTURES")
+S3_REGION = os.getenv("S3_REGION", "us-east-1")
 
-S3_PROFILE_PICTURES = "266552-ttt-profile-pictures"
-S3_REGION = "us-east-1"
+# S3_PROFILE_PICTURES = "266552-ttt-profile-pictures"
+# S3_REGION = "us-east-1"
 
 # SNS Topic
-# SNS_TOPIC_ARN = os.getenv("SNS_TOPIC_ARN")
-# SNS_REGION = os.getenv("SNS_REGION", "us-east-1")
+SNS_TOPIC_ARN = os.getenv("SNS_TOPIC_ARN")
+SNS_REGION = os.getenv("SNS_REGION", "us-east-1")
 
-SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:533267276546:game_ended_topic"
-SNS_REGION = "us-east-1"
+# SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:533267276546:game_ended_topic"
+# SNS_REGION = "us-east-1"
 
 # DB
-# DB_TABLE_NAME = os.getenv("DB_TABLE_NAME")
-# DB_REGION = os.getenv("SNS_REGION", "us-east-1")
+DB_TABLE_NAME = os.getenv("DB_TABLE_NAME")
+DB_REGION = os.getenv("SNS_REGION", "us-east-1")
 
-DB_TABLE_NAME = "Players"
-DB_REGION = "us-east-1"
+# DB_TABLE_NAME = "Players"
+# DB_REGION = "us-east-1"
 
 
 
