@@ -1,0 +1,72 @@
+
+body{
+    background-color: #26122c;
+    font-family: Arial, sans-serif;
+}
+.container{
+ text-align: center;
+}
+
+.title{
+ color: rgb(255, 255, 255);
+ font-size: 50px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.button{
+ width: 200px;
+ height: 80px;
+ border: none;
+ outline: none;
+ cursor: pointer;
+ border-radius: 30px;
+ background:  #b18dbb;
+ font-size: 26px;
+ color: #ffffff;
+
+}
+
+.box{
+text-align: center;
+display: flex;
+justify-content: center; /* centrowanie wzdłuż osi X */
+align-items: center; /* centrowanie wzdłuż osi Y */
+height: 100px;
+width: 100px;
+background: #b18dbb;
+border: 4px solid #0f1b21;
+border-radius: 12px;
+cursor: pointer;
+overflow: hidden;
+font-size: 60px;
+
+}
+
+.board{
+ height: 324px;
+ width: 324px;
+ display: flex;
+ margin: auto;
+}
+
+.text{
+ color: rgb(241, 214, 233);
+ font-size: 25px;
+ justify-content: center;
+ align-items: center;
+ display: flex;
+
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.player, .opponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}

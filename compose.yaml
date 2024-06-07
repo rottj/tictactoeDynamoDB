@@ -1,0 +1,28 @@
+version: '2.0'
+services:
+  frontend:
+    image: myfrontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+      args:
+        - API_GATEWAY_URL=${API_GATEWAY_URL}
+    ports:
+      - 8081:3000
+  backend:
+    image: mybackend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - USER_POOL_ID=${USER_POOL_ID}
+      - APP_CLIENT_ID=${APP_CLIENT_ID}
+      - COGNITO_REGION=${COGNITO_REGION}
+      - S3_REGION=${S3_REGION}
+      - S3_PROFILE_PICTURES=${S3_PROFILE_PICTURES}
+      - SNS_TOPIC_ARN=${SNS_TOPIC_ARN}
+      - SNS_REGION=${SNS_REGION}
+      - DB_TABLE_NAME=${DB_TABLE_NAME}
+      - DB_REGION=${DB_REGION}

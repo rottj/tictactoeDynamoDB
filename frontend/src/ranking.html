@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Graczy</title>
+    <link rel="stylesheet" type="text/css" href="ranking.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Ranking</h1>
+        <button class="button" onclick="home()">HOME</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Nick</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="rankingTableBody">
+
+            </tbody>
+        </table>
+        <div id="ranking_info_div"></div>
+    </div>
+    <script>
+        var url = window.location.href;
+        var urlParts = url.split(':');
+        var hostAddress = urlParts[0] + ':' + urlParts[1] + ':8080';
+        document.addEventListener("DOMContentLoaded", function () {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', hostAddress + '/get_rankings', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var rankingData = JSON.parse(xhr.responseText);
+                    var tableBody = document.getElementById("rankingTableBody");
+
+                    if (rankingData.length === 0) {
+                        document.getElementById("ranking_info_div").innerHTML = '<h2 class="no-data">No data</h2>';
+                    } else {
+                        rankingData.forEach(function (player) {
+                            var row = document.createElement("tr");
+
+                            var rankCell = document.createElement("td");
+                            rankCell.textContent = player.rank;
+                            row.appendChild(rankCell);
+
+                            var nickCell = document.createElement("td");
+                            nickCell.textContent = player.player_nick;
+                            row.appendChild(nickCell);
+
+                            var resultsCell = document.createElement("td");
+                            resultsCell.textContent = player.result;
+                            row.appendChild(resultsCell);
+
+                            tableBody.appendChild(row);
+                        });
+                    }
+                } else if (xhr.readyState === XMLHttpRequest.DONE) {
+                    console.error('Error fetching rankings:', xhr.statusText);
+                }
+            };
+
+            xhr.send();
+        });
+        function home() {
+            window.location = "index.html";
+        }
+    </script>
+</body>
+
+</html>

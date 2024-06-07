@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="game.css">
+
+</head>
+
+<body>
+    <div class="container">
+      <h1 class="title">Tic Tac Toe Game</h1>
+
+      
+      <div class="container2">
+        <div class="player">
+        <h2 class="text" id="yourNick"></h2>
+        <div id="player_image"></div>
+        <h2 class="text" id="yourSymbol"</h2>
+        </div>
+        <div class="opponent">
+        <h2 class="text" id="opponent"></h2>
+        <div id="opponent_image"></div>
+        </div>
+      </div>
+
+      <div class="board">
+          <div class="row1">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+          </div>
+          <div class="row2">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+          </div>
+          <div class="row3">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+          </div>
+      </div>
+      <div>      
+        <h1 class="title" id="winner"></h1>
+        <button class="button" onclick="endGame()">END GAME</button>
+    </div>
+
+  </div>
+  <script src="game.js"></script>
+
+</body>
+</html>

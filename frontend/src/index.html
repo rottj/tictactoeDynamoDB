@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+      <h1 class="title">Tic Tac Toe Game</h1>
+         <!-- <input class="input" type="text" id="nickInput" placeholder="Enter your nickname"> -->
+         <div></div>
+         <div id="play_button_div"></div>
+         <div id="login_button_div"></div>
+         <div id="logout_button_div"></div>
+         <button class="button" onclick="ranking()">Ranking</button>
+         
+  </div>
+
+    <script>
+        //var hostAddress = 'http://localhost:5000';
+        //var hostAddress = 'http://localhost:8080';
+        // var hostAddress = 'http://rottj.us-east-1.elasticbeanstalk.com:8080';
+        
+        var url = window.location.href;
+        var urlParts = url.split(':');
+        var hostAddress = urlParts[0] + ':' + urlParts[1] + ':8080';
+        
+        var accessToken = localStorage.getItem('accessToken');
+        
+        if (accessToken != "" && accessToken != null && accessToken != "null") {
+            document.getElementById('play_button_div').innerHTML = '<button class="button" onclick="registerPlayer()">Join game</button>';
+            document.getElementById('logout_button_div').innerHTML = '<button class="button" onclick="logout()">Logout</button>';
+            document.getElementById('login_button_div').innerHTML = "";
+            
+        } else {
+            document.getElementById('login_button_div').innerHTML = '<button class="button" id="login_button" onclick="authorize()">Login</button>';
+            document.getElementById('play_button_div').innerHTML = "";
+            document.getElementById('logout_button_div').innerHTML = "";
+        }
+        
+        
+        function registerPlayer() {
+                var xhr = new XMLHttpRequest();
+                var accessToken = localStorage.getItem('accessToken');
+                
+                xhr.open('POST', hostAddress + '/register_for_game', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var data = JSON.parse(xhr.responseText);
+                            if (data.status === 'registered') {
+                                localStorage.setItem('nick', data.nick)
+                                window.location = "game.html";
+                            }else if (data.status === 'full') {
+                                alert('Game is full. Please try again later.');
+                            }else if (data.status === 'taken') {
+                                localStorage.setItem('nick', data.nick)
+                                window.location = "game.html";
+                            }
+                        }else if (xhr.status === 403) {
+                        alert('You are unauthorized.');
+                         }
+                        else {
+                            console.error('Error registering player');
+                        }
+                    }
+                };
+                xhr.send();
+
+        }  
+         function logout() {
+            var xhr = new XMLHttpRequest();
+            var accessToken = localStorage.getItem('accessToken');
+
+            xhr.open('POST', hostAddress + '/logout', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+            localStorage.setItem('accessToken', "");
+            localStorage.setItem('refreshToken', "");
+            location.reload();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status != 200) {
+                        console.error('Log out error.');
+                    }
+                }
+            };
+
+            xhr.send(JSON.stringify({ access_token: access_token }));
+        }
+        
+        function ranking() {
+            window.location = "ranking.html";
+        }
+
+        function authorize() {
+            window.location = "authorize.html";
+        } 
+    </script>
+</body>
+</html>
+

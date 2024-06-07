@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>authorize</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Register</h1>
+        <div class="row">
+            <div class="column">
+                <input class="input" type="text" id="nickInputRegister" placeholder="Nick">
+                <input class="input" type="text" id="emailInputRegister" placeholder="Email">
+                <input class="input" type="password" id="passwordInputRegister" placeholder="Password">
+                <input class="input" type="file" id="imageInputRegister" accept="image/*">
+                <button class="button" onclick="register()">Register</button>
+            </div>
+            <div class="column">
+                <input class="input" type="text" id="nickInputVerify" placeholder="Nick">
+                <input class="input" type="text" id="codeInputVerify" placeholder="Verification Code">
+                <button class="button" onclick="verify()">Verify</button>
+            </div>
+            <div class="column">
+                <button class="button" onclick="goToLogin()">Login</button>
+            </div>
+
+        </div>
+        <button class="button" onclick="home()">Home</button>
+
+    </div>
+    <script src="authorize.js"></script>
+
+</body>
+
+</html>
