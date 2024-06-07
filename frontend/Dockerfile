@@ -9,7 +9,7 @@ WORKDIR /home/stud
 
 COPY src/ .
 
-RUM sed -i "s|API_GATEWAY_URL|$API_GATEWAY_URL|g" index.html && \
+RUN sed -i "s|API_GATEWAY_URL|$API_GATEWAY_URL|g" index.html && \
     sed -i "s|API_GATEWAY_URL|$API_GATEWAY_URL|g" game.js
 
 ENTRYPOINT ["busybox"]
